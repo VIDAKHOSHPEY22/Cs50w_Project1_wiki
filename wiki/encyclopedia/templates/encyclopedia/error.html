@@ -1,0 +1,61 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Error
+{% endblock %}
+
+{% block body %}
+
+    <style>
+        /* تنظیمات کلی صفحه خطا */
+        .error-container {
+            max-width: 600px;
+            margin: 80px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0px 5px 15px rgba(255, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        h1 {
+            color: #d9534f; /* قرمز برای نمایش خطا */
+            font-size: 28px;
+            margin-bottom: 15px;
+            font-weight: bold;
+        }
+
+        p {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* تنظیمات دکمه بازگشت */
+        .home-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 6px;
+            background: linear-gradient(to right, #d9534f, #b52e2e);
+            color: white;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+            text-decoration: none;
+        }
+
+        .home-btn:hover {
+            background: linear-gradient(to right, #b52e2e, #8a1e1e);
+            box-shadow: 0px 4px 12px rgba(255, 0, 0, 0.3);
+        }
+    </style>
+
+    <div class="error-container">
+        <h1>Error</h1>
+        <p>{{ message }}</p>
+        <a href="{% url 'index' %}" class="home-btn">Return to Home</a>
+    </div>
+
+{% endblock %}

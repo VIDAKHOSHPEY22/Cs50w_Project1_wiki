@@ -1,0 +1,84 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Edit {{ title }}
+{% endblock %}
+
+{% block body %}
+
+    <style>
+        /* تنظیمات کلی فرم */
+        form {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h1 {
+            color: #004b8d;
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        /* تنظیمات فیلدهای ورودی */
+        label {
+            font-size: 16px;
+            font-weight: bold;
+            color: #004b8d;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 6px;
+            border: 2px solid #004b8d;
+            background: #f8f8f8;
+            transition: 0.3s ease-in-out;
+            outline: none;
+        }
+
+        textarea:focus {
+            border-color: #6a9eff;
+            background: white;
+            box-shadow: 0px 0px 6px rgba(106, 158, 255, 0.5);
+        }
+
+        /* تنظیمات دکمه */
+        button {
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+            border: none;
+            border-radius: 6px;
+            background: linear-gradient(to right, #004b8d, #6a9eff);
+            color: white;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background: linear-gradient(to right, #003366, #004b8d);
+            box-shadow: 0px 4px 12px rgba(0, 75, 141, 0.3);
+        }
+    </style>
+
+    <h1>Edit Entry: {{ title }}</h1>
+
+    <form action="{% url 'edit_page' title %}" method="post">
+        {% csrf_token %}
+        <label for="markdown-content">Content (Markdown):</label>
+        <textarea id="markdown-content" name="content" rows="10">{{ content }}</textarea>
+        <br>
+        <button type="submit">Save Changes</button>
+    </form>
+
+{% endblock %}

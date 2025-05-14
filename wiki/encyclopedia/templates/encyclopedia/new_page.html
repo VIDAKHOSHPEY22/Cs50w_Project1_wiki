@@ -1,0 +1,84 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Create New Page
+{% endblock %}
+
+{% block body %}
+
+    <style>
+        /* تنظیمات کلی فرم */
+        form {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h1 {
+            color: #004b8d;
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        /* تنظیمات فیلدهای ورودی */
+        label {
+            font-size: 16px;
+            font-weight: bold;
+            color: #004b8d;
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border-radius: 6px;
+            border: 2px solid #004b8d;
+            background: #f8f8f8;
+            transition: 0.3s ease-in-out;
+        }
+
+        input:focus, textarea:focus {
+            border-color: #6a9eff;
+            background: white;
+        }
+
+        /* تنظیمات دکمه */
+        button {
+            width: 100%;
+            padding: 12px;
+            font-size: 18px;
+            border: none;
+            border-radius: 6px;
+            background: linear-gradient(to right, #004b8d, #6a9eff);
+            color: white;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background: linear-gradient(to right, #003366, #004b8d);
+            box-shadow: 0px 4px 12px rgba(0, 75, 141, 0.3);
+        }
+    </style>
+
+    <h1>Create a New Encyclopedia Entry</h1>
+
+    <form action="{% url 'new_page' %}" method="post">
+        {% csrf_token %}
+        {{create_form}}
+        <label for="title">Title:</label>
+        <input type="text" name="title" required>
+        <br>
+        <label for="content">Content (Markdown):</label>
+        <textarea name="content" rows="10" required></textarea>
+        <br>
+        <button type="submit">Save</button>
+    </form>
+
+{% endblock %}

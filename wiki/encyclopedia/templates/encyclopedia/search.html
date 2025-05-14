@@ -1,0 +1,93 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Search Results
+{% endblock %}
+
+{% block body %}
+
+    <style>
+        /* تنظیمات کلی برای صفحه جستجو */
+        .search-container {
+            max-width: 700px;
+            margin: 40px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+        }
+
+        h1 {
+            color: #004b8d;
+            font-size: 28px;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+
+        li a {
+            text-decoration: none;
+            color: #004b8d;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        li a:hover {
+            color: #6a9eff;
+            text-decoration: underline;
+        }
+
+        p {
+            font-size: 20px;
+            font-weight: bold;
+            color: #d9534f;
+        }
+
+        /* تنظیمات دکمه بازگشت */
+        .back-btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 6px;
+            background: linear-gradient(to right, #004b8d, #6a9eff);
+            color: white;
+            cursor: pointer;
+            transition: 0.3s ease-in-out;
+            text-decoration: none;
+        }
+
+        .back-btn:hover {
+            background: linear-gradient(to right, #003366, #004b8d);
+            box-shadow: 0px 4px 12px rgba(0, 75, 141, 0.3);
+        }
+    </style>
+
+    <div class="search-container">
+        <h1>Search Results for "{{ query }}"</h1>
+
+        {% if results %}
+            <ul>
+                {% for entry in results %}
+                    <li><a href="{% url 'entry_page' entry %}">{{ entry }}</a></li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <p>No results found. 🥹🤨 TRY AGAIN</p>
+        {% endif %}
+
+        <a href="{% url 'index' %}" class="back-btn">Go back to home</a>
+    </div>
+
+{% endblock %}
