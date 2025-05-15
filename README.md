@@ -13,7 +13,7 @@ This project is an implementation of the **Wiki Project** for CS50’s Web Progr
 
 ### **Project Demonstration:**  
 Check out the full **video submission** showcasing the project features here:  
-📺 **YouTube Link:** [[Insert Your YouTube URL Here](https://youtu.be/Lc8oJDi-Iro?si=yzCkV1M_cA3ANT9l)]  
+📺 **YouTube Link:** (https://youtu.be/Lc8oJDi-Iro?si=yzCkV1M_cA3ANT9l)
 
 This project was developed as part of the **CS50 Web Programming with Python and JavaScript** curriculum, emphasizing Django development, front-end styling, and database integration.  
 
